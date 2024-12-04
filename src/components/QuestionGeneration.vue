@@ -45,7 +45,7 @@ const submitForm = () => {
     let file = selectedFile.value;
     let formData = new FormData();
     formData.append('file', file);
-    print("fetch");
+    console.log("fetch");
     const apiUrl = process.env.VUE_APP_QUESTION_GENERATION;
     fetch(apiUrl, {
       method: 'POST',
