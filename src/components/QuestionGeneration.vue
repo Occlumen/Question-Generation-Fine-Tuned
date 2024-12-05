@@ -45,10 +45,11 @@ const submitForm = () => {
     let file = selectedFile.value;
     let formData = new FormData();
     formData.append('file', file);
-    fetch("https://questiongeneration.klaraeunwon.in/question_generation", {
-    method: 'POST',
-    body: formData
-    })
+    const apiUrl = process.env.VUE_APP_QUESTION_GENERATION;
+    fetch(apiUrl, {
+      method: 'POST',
+      body: formData
+     })
     .then(resp => resp.json())
     .then(data => {
         if (data.errors) {
