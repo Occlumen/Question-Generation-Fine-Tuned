@@ -46,23 +46,20 @@ const submitForm = () => {
     let formData = new FormData();
     formData.append('file', file);
     fetch("https://questiongeneration.klaraeunwon.in/question_generation", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-       },
-      body: JSON.stringify(data)
-      })
-      .then(resp => resp.json())
-      .then(data => {
-          if (data.errors) {
-            alert(data.errors)
-          }
-          else {
-            loading.value = false;
-            console.log(data);
-            topicJson.value = data.topic_json;
-            questionJson.value = data.question_json;
-          }
+    method: 'POST',
+    body: formData
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        if (data.errors) {
+          alert(data.errors)
+        }
+        else {
+          loading.value = false;
+          console.log(data);
+          topicJson.value = data.topic_json;
+          questionJson.value = data.question_json;
+        }
       })
   } else {
     alert("Please select a file first.");
